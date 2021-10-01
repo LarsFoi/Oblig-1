@@ -4,7 +4,7 @@ import sys
 
 
 
-### Enter bet ### -lars
+### Enter bet-def ### -lars
 def bet():
 	bet = 0
 	bet = input("Enter a how much you want to bet?: ")
@@ -20,11 +20,7 @@ def bet():
 		main()
 	return int(bet)
 
-### start sequence ### -lars	
-def start():
-	bet()
-
-### Enter guess ### -lars
+### Enter guess-def ### -lars
 def guess():
 	guess = input("What is your guess? (1-50): ")
 	if guess.isdigit():
@@ -37,6 +33,10 @@ def guess():
 	else:
 		print(f"'{guess}' is an invalid guess")
 		main()
+		
+### start sequence ### -lars	
+def start():
+	bet()
 
 ### main ###
 def main():
