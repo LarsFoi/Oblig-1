@@ -1,10 +1,16 @@
-### Enter your bet ### -lars
+### script header ###
+import sys
+
+
+
+
+### Enter bet ### -lars
 def bet():
 	bet = 0
 	bet = input("Enter a how much you want to bet?: ")
 	if bet.isdigit():
+		bet = int(bet)
 		if bet >= 1:
-			bet = int(bet)
 			print(f"{bet} is an accepted amount")
 		else :
 			print(f"{bet} is not an accepted amount")
@@ -12,7 +18,13 @@ def bet():
 	else:
 		print(f"'{bet}' is an invalid input")
 		main()
+	return int(bet)
 
+### start sequence ### -lars	
+def start():
+	bet()
+
+### Enter guess ### -lars
 def guess():
 	guess = input("What is your guess? (1-50): ")
 	if guess.isdigit():
@@ -26,21 +38,26 @@ def guess():
 		print(f"'{guess}' is an invalid guess")
 		main()
 
-
-				
-				
-#def game1():
-#	pass		
-#		
-#
-def start():
-	bet()
-
+### main ###
 def main():
 	guess()
-#	
-#	while bet > 0:
-#		pass
-#	
+
+### game header ###
+
+start()
+
+
+### main game loop ###
+while bet > 0:	
+	main()
 	
-guess()
+	
+while bet <= 0:
+	print("play again?")
+	x = input("'y'es or 'n'o")
+	if x == "y":
+		main()
+	else:
+		sys.exit()
+
+### game loop end###	
