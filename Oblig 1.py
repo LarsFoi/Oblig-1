@@ -6,26 +6,26 @@ import sys
 
 ### Enter bet-def ### -lars
 def bet():
-	bet = 0
-	bet = input("Enter a how much you want to bet?: ")
-	if bet.isdigit():
-		bet = int(bet)
-		if bet >= 1:
+	bet_num = 0
+	bet_num = input("Enter a how much you want to bet?: ")
+	if bet_num.isdigit():
+		bet_num = int(bet_num)
+		if bet_num >= 1:
 			print(f"{bet} is an accepted amount")
 		else :
 			print(f"{bet} is not an accepted amount")
-			main()			
+			main()
+		return bet_num			
 	else:
 		print(f"'{bet}' is an invalid input")
 		main()
-	return int(bet)
 
 ### Enter guess-def ### -lars
 def guess():
-	guess = input("What is your guess? (1-50): ")
-	if guess.isdigit():
-		guess = int(guess)
-		if guess >= 1 and guess <= 50:
+	guess_num = input("What is your guess? (1-50): ")
+	if guess_num.isdigit():
+		guess_num = int(guess_num)
+		if guess_num >= 1 and guess_num <= 50:
 			print(f"you entered {guess}")
 		else :
 			print(f"{guess} is not an accepted guess")
@@ -48,11 +48,14 @@ start()
 
 
 ### main game loop ###
-while bet > 0:	
+while bet_num > 1:	
 	main()
 	
+	### for loop ###
+		# medforsøk 1,2,3 #
 	
-while bet <= 0:
+	
+while bet_num <= int(0):
 	print("play again?")
 	x = input("'y'es or 'n'o")
 	if x == "y":
