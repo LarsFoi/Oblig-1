@@ -1,12 +1,12 @@
 ### script header ###
 import sys
+from random import randrange
 bet_num = 0
 guess_num = 0
-
+random_num = 0
 
 ### Enter bet-def ### -lars
 def bet():
-	bet_num = 0
 	bet_num = input("Enter a how much you want to bet?: ")
 	if bet_num.isdigit():
 		bet_num = int(bet_num)
@@ -18,13 +18,6 @@ def bet():
 			main()
 	else:
 		print(f"'{bet_num}' is an invalid input")
-			print(f"{bet} is an accepted amount")
-		else :
-			print(f"{bet} is not an accepted amount")
-			main()
-		return bet_num			
-	else:
-		print(f"'{bet}' is an invalid input")
 		main()
 
 ### Enter guess-def ### -lars
@@ -34,19 +27,14 @@ def guess():
 		guess_num = int(guess_num)
 		if guess_num >= 1 and guess_num <= 50:
 			print(f"you entered {guess_num}")
-		else :
-			print(f"{guess_num} is not an accepted guess")
+			return int(guess_num)
+		else:
+			print(f"'{guess_num}' is not an accepted guess")
 			main()			
 	else:
 		print(f"'{guess_num}' is an invalid guess")
-			print(f"you entered {guess}")
-		else :
-			print(f"{guess} is not an accepted guess")
-			main()			
-	else:
-		print(f"'{guess}' is an invalid guess")
 		main()
-		
+
 ### start sequence ### -lars	
 def start():
 	bet()
@@ -54,25 +42,48 @@ def start():
 ### main ###
 def main():
 	guess()
+	random_num = randrange(1,50)
+	print(f"the number is {random_num}")
+	if guess_num == random_num:
+		bet_num = bet_num * 10
+		print(f"your score is {bet_num}")
+		return int(bet_num)
+	else:
+		print("too bad, you have 2 etempts left")
+	guess()
+	random_num = randrange(1,50)
+	print(f"the number is {random_num}")
+	if guess_num == random_num:
+		bet_num = bet_num * 5
+		print(f"your score is {bet_num}")
+		return int(bet_num)
+	else:
+		print("too bad, you have 1 etempt left")
+	guess()
+	random_num = randrange(1,50)
+	print(f"the number is {random_num}")
+	if guess_num == random_num:
+		bet_num = bet_num * 2
+		print(f"your score is {bet_num}")
+		return int(bet_num)
+	else:
+		print("you loose")
+		bet_num = 0
 
 ### game header ###
 
 start()
 
-
 ### main game loop ###
 while bet_num > 1:	
 	main()
 	
-	### for loop ###
-		# medforsøk 1,2,3 #
-	
 	
 while bet_num <= 0:
-while bet_num <= int(0):
 	print("play again?")
-	x = input("'y'es or 'n'o")
+	x = input("'y'es or 'n'o: ")
 	if x == "y":
+		start()
 		main()
 	else:
 		sys.exit()
