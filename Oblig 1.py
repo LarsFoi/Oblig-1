@@ -15,10 +15,8 @@ def bet():
 			return int(bet_num)
 		else:
 			print(f"{bet_num} is not an accepted amount")
-			main()
 	else:
 		print(f"'{bet_num}' is an invalid input")
-		main()
 
 ### Enter guess-def ### -lars
 def guess():
@@ -30,10 +28,8 @@ def guess():
 			return int(guess_num)
 		else:
 			print(f"'{guess_num}' is not an accepted guess")
-			main()			
 	else:
 		print(f"'{guess_num}' is an invalid guess")
-		main()
 
 ### start sequence ### -lars	
 def start():
@@ -42,17 +38,15 @@ def start():
 ### main ###
 def main():
 	guess()
-	random_num = randrange(1,50)
+	random_num = int(randrange(1,50))
 	print(f"the number is {random_num}")
-	if guess_num == random_num:
+	if int(guess_num) == int(random_num):
 		bet_num = bet_num * 10
 		print(f"your score is {bet_num}")
 		return int(bet_num)
 	else:
 		print("too bad, you have 2 etempts left")
 	guess()
-	random_num = randrange(1,50)
-	print(f"the number is {random_num}")
 	if guess_num == random_num:
 		bet_num = bet_num * 5
 		print(f"your score is {bet_num}")
@@ -60,10 +54,8 @@ def main():
 	else:
 		print("too bad, you have 1 etempt left")
 	guess()
-	random_num = randrange(1,50)
-	print(f"the number is {random_num}")
 	if guess_num == random_num:
-		bet_num = bet_num * 2
+		bet_num = bet_num * 3
 		print(f"your score is {bet_num}")
 		return int(bet_num)
 	else:
@@ -75,7 +67,7 @@ def main():
 start()
 
 ### main game loop ###
-while bet_num > 1:	
+while bet_num > 0:	
 	main()
 	
 	
