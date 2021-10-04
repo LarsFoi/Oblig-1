@@ -76,11 +76,16 @@ def main():
 ### game header ###
 
 start()
+main()
 
 ### main game loop ###
 while bet_num > 0:	
-	main()
-	
+	print(f"You won! play again? Your score is {bet_num}")
+	x = input("'y'es or 'n'o: ")
+	if x == "y":
+		main()
+	else:
+		sys.exit()
 	
 while bet_num <= 0:
 	print("play again?")
