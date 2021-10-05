@@ -5,6 +5,9 @@ Created on Mon Oct  4 17:26:07 2021
 @author: haako
 """
 
+# Har her satt at man kan kalle seg hva som helst, .,-po9 hvis ønskelig.. 
+# ellers tror jeg den fungerer som den skal
+
 from random import randint
 
 print('%3s' % '-','%0s' % '', 'Choose any number between 1 and 50.')
