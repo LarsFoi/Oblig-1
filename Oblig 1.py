@@ -41,6 +41,8 @@ def function():
                 betting_amount = input('Enter your betting amount: ')
                 if betting_amount.isdigit() is True:
                     condition = False
+                else:
+                    print('',end='')
         else:
             condition = False
             
@@ -59,6 +61,10 @@ def function():
                             betting_amount = input('Enter your betting amount: ')
                             if betting_amount.isdigit() is True:
                                 condition = False
+                            else:
+                                print('',end='')
+                    else:
+                        print('',end='')
             else:
                 print('You can not bet a negative number')
                 betting_amount = input('Enter a betting amount: ')
@@ -69,6 +75,10 @@ def function():
                         betting_amount = input('Enter your betting amount: ')
                         if betting_amount.isdigit() is True:
                             condition = False
+                        else:
+                            print('',end='')
+                else:
+                    print('',end='')
                 
     i = 3            
     condition = True
