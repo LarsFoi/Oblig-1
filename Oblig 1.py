@@ -72,10 +72,12 @@ def function():
     while condition:
         num_guess = input('Enter a number between 1 and 50: ')
         if num_guess.isdigit() is False:
-            print('Invalid input')
+            print(f'Invalid input, you got {i} attempts left')
             num_guess = input('Enter a number between 1 and 50: ')
             if num_guess.isdigit() is True:
                 condition = False
+            else:
+                print(f'Invalid input, you got {i} attempts left')
         else:
             if int(num_guess) > 0:
                 if int(num_guess) <= 50:
@@ -111,19 +113,19 @@ def function():
         while condition:
             num_guess = input('Enter a number between 1 and 50: ')
             if num_guess.isdigit() is False:
-                print('Invalid input')
+                print(f'Invalid input, you got {2-i} attempts left')
                 num_guess = input('Enter a number between 1 and 50: ')
                 if num_guess.isdigit() is True:
                     condition = False
                 else:
-                    print('Invalid input')
+                    print(f'Invalid input, you got {2-i} attempts left')
             elif int(num_guess) > 0:
                 if int(num_guess) <= 50:
                     condition = False
                 else:
-                    print(f'Invalid input, you got {i} attempts left')
+                    print(f'Invalid input, you got {2-i} attempts left')
             else:
-                print(f'Invalid input, you got {i} attempts left')
+                print(f'Invalid input, you got {2-i} attempts left')
         
         i = i + 1
         
