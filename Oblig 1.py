@@ -2,7 +2,7 @@
 """
 Created on Mon Oct  4 17:26:07 2021
 
-@author: haako
+@author: håkon
 """
 
 # Har her satt at man kan kalle seg hva som helst, .,-po9 hvis ønskelig.. 
