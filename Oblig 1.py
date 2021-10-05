@@ -5,8 +5,10 @@ Created on Mon Oct  4 17:26:07 2021
 @author: håkon
 """
 
-# Har her satt at man kan kalle seg hva som helst, .,-po9 hvis ønskelig.. 
+# Har her satt at man kan kalle seg hva som helst, .,-po9 hvis ønskelig..
+# Har bare en funskjon, er jo egentlig unødvendig det. 
 # ellers tror jeg den fungerer som den skal
+
 
 from random import randint
 
