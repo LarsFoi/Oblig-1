@@ -1,5 +1,5 @@
 ########---to do---################################
-# 1. legg til balance i start sequence
+# 1. if i start is digit
 # 2. 
 # 3. 
 # 4. 
@@ -12,24 +12,37 @@ bet_num = 0
 guess_num = 0
 random_num = 0
 balance = 0
+p_name = "****"
 
 ### start sequence --- ###
 def start():
-	bet()
+	global balance
+	global p_name
+	p_name = input("Enter your name: ")
+	
+	
+	balance = 0
+	balance = int(input("please input a $ amount to set your balance"))
+	return int(balance)
+	return p_name
 
 ### Enter bet-def ###
 def bet():
 	global bet_num
+	global balance
 	bet_num = input("Enter a how much you want to bet?: ")
 	if bet_num.isdigit():
 		bet_num = int(bet_num)
 		if bet_num >= 1:
+			balance = balance - bet_num
 			print(f"{bet_num} is an accepted amount")
+			print(f"your balance is {balance}")
 		else:
 			print(f"{bet_num} is not an accepted amount")
 	else:
 		print(f"'{bet_num}' is an invalid input")
 	return int(bet_num)
+	return balance
 
 ### Enter guess-def ###
 def guess():
@@ -49,6 +62,10 @@ def guess():
 def main():
 	global bet_num
 	global guess_num
+	global balance
+	
+	### bet ###
+	bet()
 	
 	## guess 1 ##
 	guess()
@@ -56,8 +73,11 @@ def main():
 	print(f"###the number is {random_num}###") ### debugging - bare sånn at vi kan se hva tallet er ###
 	if int(guess_num) == int(random_num):
 		bet_num = bet_num * 10
-		print(f"your score is {bet_num}")
+		balance += bet_num
+		print(f"you won {bet_num}$, your balance is {balance}")
+		bet_num = 0
 		return int(bet_num)
+		return balance
 	else:
 		if guess_num > random_num:
 			print("too hight, you have 2 etempts left")
@@ -68,8 +88,11 @@ def main():
 	guess()
 	if guess_num == random_num:
 		bet_num = bet_num * 5
-		print(f"your score is {bet_num}")
+		balance = balance + bet_num
+		print(f"you won {bet_num}$, your balance is {balance}")
+		bet_num = 0
 		return int(bet_num)
+		return balance
 	else:
 		if guess_num > random_num:
 			print("too hight, you have 2 etempts left")
@@ -80,8 +103,11 @@ def main():
 	guess()
 	if guess_num == random_num:
 		bet_num = bet_num * 3
-		print(f"your score is {bet_num}")
+		balance += bet_num
+		print(f"you won {bet_num}$, your balance is {balance}")
+		bet_num = 0
 		return int(bet_num)
+		return balance
 	else:
 		print("you loose")
 		bet_num = 0
@@ -93,15 +119,15 @@ start()
 main()
 
 ### game loop ###
-while bet_num > 0:	
-	print(f"You won! play again? Your score is {bet_num}")
+while balance > 0:	
+	print(f"You won! play again? Your balance is {balance}")
 	x = input("'y'es or 'n'o: ")
 	if x == "y":
 		main()
 	else:
 		sys.exit()
 	
-while bet_num <= 0:
+while balance <= 0:
 	print("You lose, play again?")
 	x = input("'y'es or 'n'o: ")
 	if x == "y":
