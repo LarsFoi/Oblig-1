@@ -1,139 +1,169 @@
-########---to do---################################
-# 1. if i start is digit
-# 2. 
-# 3. 
-# 4. 
-###################################################
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct  4 17:26:07 2021
 
-### script header ###
-import sys
-from random import randrange
-bet_num = 0
-guess_num = 0
-random_num = 0
-balance = 0
-p_name = "****"
+@author: haako
+"""
 
-### start sequence --- ###
-def start():
-	global balance
-	global p_name
-	p_name = input("Enter your name: ")
-	
-	
-	balance = 0
-	balance = int(input("please input a $ amount to set your balance"))
-	return int(balance)
-	return p_name
+from random import randint
 
-### Enter bet-def ###
-def bet():
-	global bet_num
-	global balance
-	bet_num = input("Enter a how much you want to bet?: ")
-	if bet_num.isdigit():
-		bet_num = int(bet_num)
-		if bet_num >= 1:
-			balance = balance - bet_num
-			print(f"{bet_num} is an accepted amount")
-			print(f"your balance is {balance}")
-		else:
-			print(f"{bet_num} is not an accepted amount")
-	else:
-		print(f"'{bet_num}' is an invalid input")
-	return int(bet_num)
-	return balance
+print('%3s' % '-','%0s' % '', 'Choose any number between 1 and 50.')
+print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 1.st attempt, you will get 10 times the money you bet')
+print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 2.nd attempt, you will get 5 times the money you bet')
+print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 3.rd attempt, you will get 3 times the money you bet')
+print('%3s' % '-','%0s' % '', 'If you do not guess the number correctly within three attempts, you will lose your betting amount')
 
-### Enter guess-def ###
-def guess():
-	global guess_num
-	guess_num = input("What is your guess? (1-50): ")
-	if guess_num.isdigit():
-		guess_num = int(guess_num)
-		if guess_num >= 1 and guess_num <= 50:
-			print(f"you entered {guess_num}")
-		else:
-			print(f"'{guess_num}' is not an accepted guess")
-	else:
-		print(f"'{guess_num}' is an invalid guess")
-	return int(guess_num)
+name = input('Please enter your name: ')
 
-### main ###
-def main():
-	global bet_num
-	global guess_num
-	global balance
-	
-	### bet ###
-	bet()
-	
-	## guess 1 ##
-	guess()
-	random_num = int(randrange(1,50))
-	print(f"###the number is {random_num}###") ### debugging - bare sånn at vi kan se hva tallet er ###
-	if int(guess_num) == int(random_num):
-		bet_num = bet_num * 10
-		balance += bet_num
-		print(f"you won {bet_num}$, your balance is {balance}")
-		bet_num = 0
-		return int(bet_num)
-		return balance
-	else:
-		if guess_num > random_num:
-			print("too hight, you have 2 etempts left")
-		else:
-			print("to low; you have 2 etempts left")
-	
-	## guess 2 ##
-	guess()
-	if guess_num == random_num:
-		bet_num = bet_num * 5
-		balance = balance + bet_num
-		print(f"you won {bet_num}$, your balance is {balance}")
-		bet_num = 0
-		return int(bet_num)
-		return balance
-	else:
-		if guess_num > random_num:
-			print("too hight, you have 2 etempts left")
-		else:
-			print("to low; you have 2 etempts left")
-			
-	## guess 3 ##
-	guess()
-	if guess_num == random_num:
-		bet_num = bet_num * 3
-		balance += bet_num
-		print(f"you won {bet_num}$, your balance is {balance}")
-		bet_num = 0
-		return int(bet_num)
-		return balance
-	else:
-		print("you loose")
-		bet_num = 0
-		return int(bet_num)
+initial_amount = input('Enter your initial amount: ')
+if initial_amount.isdigit() is False:
+    condition = True
+    while condition:
+        print('Invalid input')
+        initial_amount = input('Enter your initial amount: ')
+        if initial_amount.isdigit() is True:
+            condition = False
 
-### game header ###
+    
 
-start()
-main()
+def function():
+    global initial_amount
+    condition = True
+    while condition:
+        betting_amount = input('Enter a betting amount: ')
+        if betting_amount.isdigit() is False:
+            condition = True
+            while condition:
+                print('Invalid input')
+                betting_amount = input('Enter your betting amount: ')
+                if betting_amount.isdigit() is True:
+                    condition = False
+        else:
+            condition = False
+            
+        condition = True
+        while condition:
+            if int(betting_amount) > 0:
+                if int(betting_amount) <= int(initial_amount):
+                    condition = False
+                else:
+                    print(f'You can not bet more than your initial amount ({initial_amount} $)')
+                    betting_amount = input('Enter a betting amount: ')
+                    if betting_amount.isdigit() is False:
+                        condition = True
+                        while condition:
+                            print('Invalid input')
+                            betting_amount = input('Enter your betting amount: ')
+                            if betting_amount.isdigit() is True:
+                                condition = False
+            else:
+                print('You can not bet a negative number')
+                betting_amount = input('Enter a betting amount: ')
+                if betting_amount.isdigit() is False:
+                    condition = True
+                    while condition:
+                        print('Invalid input')
+                        betting_amount = input('Enter your betting amount: ')
+                        if betting_amount.isdigit() is True:
+                            condition = False
+                
+    i = 3            
+    condition = True
+    while condition:
+        num_guess = input('Enter a number between 1 and 50: ')
+        if num_guess.isdigit() is False:
+            print('Invalid input')
+            num_guess = input('Enter a number between 1 and 50: ')
+            if num_guess.isdigit() is True:
+                condition = False
+        else:
+            if int(num_guess) > 0:
+                if int(num_guess) <= 50:
+                    condition = False
+                else:
+                    print(f'Invalid input, you got {i} attempts left')
+            else:
+                print(f'Invalid input, you got {i} attempts left')
+    
+    i = 0
+    random = randint(1,50)
+    winning_amount = 0
+    while i < 2:
+        if i == 0 and random == int(num_guess):
+            winning_amount = int(betting_amount) * 10
+            break
+        elif i == 1 and random == int(num_guess):
+            winning_amount = int(betting_amount) * 5
+            break
+        elif i == 2 and random == int(num_guess):
+            winning_amount = int(betting_amount) * 3
+            break
+        elif i == 2 and random != int(num_guess):
+            winning_amount = int(betting_amount) * 0
+            
+        else:
+            if int(num_guess) < random:
+                print(f'Too low, you got {2-i} attempts left')
+            else:
+                print(f'Too high, you got {2-i} attempts left')
+                
+        condition = True
+        while condition:
+            num_guess = input('Enter a number between 1 and 50: ')
+            if num_guess.isdigit() is False:
+                print('Invalid input')
+                num_guess = input('Enter a number between 1 and 50: ')
+                if num_guess.isdigit() is True:
+                    condition = False
+                else:
+                    print('Invalid input')
+            elif int(num_guess) > 0:
+                if int(num_guess) <= 50:
+                    condition = False
+                else:
+                    print(f'Invalid input, you got {i} attempts left')
+            else:
+                print(f'Invalid input, you got {i} attempts left')
+        
+        i = i + 1
+        
+    if winning_amount == 0:
+        print('You lost your betting amount')
+    else:
+        print(f'Congratulationt {name}! You won:', winning_amount, '$')
+    
+    initial_amount = int(initial_amount) - int(betting_amount) + winning_amount
+    
+    if initial_amount == 0:
+        print()
+        print(f'Sorry {name}, you lost all your money, thanks for playing!')
+        
+    
+    
+    else:
+        print('Your initial amount is:', int(initial_amount), '$')
+        print('Play again?',end='')
+        game = input("'y'es or 'n'o: ")
+        if game == 'y':
+            function()
+        elif game == 'n':
+            print()
+            print(f'Thanks for the game, {name}! You got {initial_amount} $')
+        else:
+            while game != 'y' or game != 'n':
+                print('Invalid input')
+                game = input("'y'es or 'n'o: ")
+                if game == 'y':
+                    function()
+                elif game == 'n':
+                    print()
+                    print(f'Thanks for the game, {name}! You got {initial_amount} $')
+                    break
+        
+            
+function()
+        
+        
 
-### game loop ###
-while balance > 0:	
-	print(f"You won! play again? Your balance is {balance}")
-	x = input("'y'es or 'n'o: ")
-	if x == "y":
-		main()
-	else:
-		sys.exit()
-	
-while balance <= 0:
-	print("You lose, play again?")
-	x = input("'y'es or 'n'o: ")
-	if x == "y":
-		start()
-		main()
-	else:
-		sys.exit()
-
-### game loop end###	
+    
+    
