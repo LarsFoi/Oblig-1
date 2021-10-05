@@ -14,7 +14,7 @@ random_num = 0
 balance = 0
 p_name = "****"
 
-### start sequence --- ###
+### start sequence ### -- add if statement
 def start():
 	global balance
 	global p_name
@@ -22,7 +22,7 @@ def start():
 	
 	
 	balance = 0
-	balance = int(input("please input a $ amount to set your balance"))
+	balance = int(input("please input a $ amount to set your balance: "))
 	return int(balance)
 	return p_name
 
@@ -31,12 +31,12 @@ def bet():
 	global bet_num
 	global balance
 	bet_num = input("Enter a how much you want to bet?: ")
-	if bet_num.isdigit():
+	if bet_num.isdigit() and int(balance) > int(bet_num):
 		bet_num = int(bet_num)
 		if bet_num >= 1:
 			balance = balance - bet_num
 			print(f"{bet_num} is an accepted amount")
-			print(f"your balance is {balance}")
+			print(f"your balance is ${balance}")
 		else:
 			print(f"{bet_num} is not an accepted amount")
 	else:
@@ -74,7 +74,7 @@ def main():
 	if int(guess_num) == int(random_num):
 		bet_num = bet_num * 10
 		balance += bet_num
-		print(f"you won {bet_num}$, your balance is {balance}")
+		print(f"you won ${bet_num}, your balance is {balance}")
 		bet_num = 0
 		return int(bet_num)
 		return balance
@@ -89,7 +89,7 @@ def main():
 	if guess_num == random_num:
 		bet_num = bet_num * 5
 		balance = balance + bet_num
-		print(f"you won {bet_num}$, your balance is {balance}")
+		print(f"{p_name} you won ${bet_num}, your balance is {balance}")
 		bet_num = 0
 		return int(bet_num)
 		return balance
@@ -104,7 +104,7 @@ def main():
 	if guess_num == random_num:
 		bet_num = bet_num * 3
 		balance += bet_num
-		print(f"you won {bet_num}$, your balance is {balance}")
+		print(f"{p_name}, you won ${bet_num}, your balance is {balance}")
 		bet_num = 0
 		return int(bet_num)
 		return balance
@@ -120,7 +120,7 @@ main()
 
 ### game loop ###
 while balance > 0:	
-	print(f"You won! play again? Your balance is {balance}")
+	print(f"{p_name}, play again? Your balance is ${balance}")
 	x = input("'y'es or 'n'o: ")
 	if x == "y":
 		main()
@@ -128,7 +128,7 @@ while balance > 0:
 		sys.exit()
 	
 while balance <= 0:
-	print("You lose, play again?")
+	print("{p_name}, You lose, play again?")
 	x = input("'y'es or 'n'o: ")
 	if x == "y":
 		start()
