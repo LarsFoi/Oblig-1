@@ -28,7 +28,7 @@ while condition:
         print('Invalid input')
         
     elif int(initial_amount) >= 10000:
-        print('You stupid')
+        print('You got balls')
         condition = False
         
     else:
