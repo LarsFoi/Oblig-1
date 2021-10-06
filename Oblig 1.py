@@ -4,13 +4,10 @@ Created on Mon Oct  4 17:26:07 2021
 
 @author: håkon
 """
-# Har her satt at man kan kalle seg hva som helst, .,-po9 hvis ønskelig.. 
-# ellers tror jeg den fungerer som den skal
-# la nå til at initial amount må være større enn 0, men en liten bug der..
-# syntes det er litt vanskelig å gjengi hva og hvorfor jeg har gjort som jeg har gjort de ulike stedene, litt vanskelig og rotete men..
+# Gjorde endring på num guess / winning amount loopen, ble no feil sånn den var, ble også lettere å forstå nå..
 
 from random import randint
-# start meny
+
 print('%3s' % '-','%0s' % '', 'Choose any number between 1 and 50.')
 print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 1.st attempt, you will get 10 times the money you bet')
 print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 2.nd attempt, you will get 5 times the money you bet')
@@ -22,8 +19,6 @@ name = input('Please enter your name: ')
 # kjører mye while utifra om condition er true eller false, gjør at ting repiteres helt til input er gyldig.
 
 initial_amount = input('Enter your initial amount: ')
-
-# ------ loop for initial amount ---------#
 condition = True
 while condition:
     if initial_amount.isdigit() is False:               
@@ -50,11 +45,10 @@ while condition:
                     print('Invalid input')
     else:
         condition = False
-#---------- loop slutt ------------------#            
+            
 
 def function():
     global initial_amount
-    # ---------- loop betting amount -------------#
     condition = True
     while condition:
         betting_amount = input('Enter a betting amount: ')
@@ -96,36 +90,29 @@ def function():
                         betting_amount = input('Enter your betting amount: ')
                         if betting_amount.isdigit() is True:
                             condition = False
-     #--------- loop slutt --------------------#
-    
-    i = 3 
-    #------- loop for num guess (bare første gang) --------#
-    condition = True
-    while condition:
-        num_guess = input('Enter a number between 1 and 50: ')
-        if num_guess.isdigit() is False:
-            print(f'Invalid input, you got {i} attempts left')
-            num_guess = input('Enter a number between 1 and 50: ')
-            if num_guess.isdigit() is True:
-                condition = False
-            else:
-                print(f'Invalid input, you got {i} attempts left')
-        else:
-            if int(num_guess) > 0:
-                if int(num_guess) <= 50:
-                    condition = False
-                else:
-                    print(f'Invalid input, you got {i} attempts left')
-            else:
-                print(f'Invalid input, you got {i} attempts left')
-    #---------- loop slutt -----------#
-    
+
     i = 0
     random = randint(1,50)
     winning_amount = 0
-    
-    #---------- loop for eventuell gevinst og de to neste num guess ------#
-    while i < 2:
+    for i in range(3):
+        condition = True
+        while condition:
+            num_guess = input('Enter a number between 1 and 50: ')
+            if num_guess.isdigit() is False:
+                print(f'Invalid input, you got {3-i} attempts left')
+                num_guess = input('Enter a number between 1 and 50: ')
+                if num_guess.isdigit() is True:
+                    condition = False
+                else:
+                    print(f'Invalid input, you got {3-i} attempts left')
+            elif int(num_guess) > 0:
+                if int(num_guess) <= 50:
+                    condition = False
+                else:
+                    print(f'Invalid input, you got {3-i} attempts left')
+            else:
+                print(f'Invalid input, you got {3-i} attempts left')
+        
         if i == 0 and random == int(num_guess):
             winning_amount = int(betting_amount) * 10
             break
@@ -142,31 +129,12 @@ def function():
             if int(num_guess) < random:
                 print(f'Too low, you got {2-i} attempts left')
             else:
-                print(f'Too high, you got {2-i} attempts left')         # her er (i) = 2-i, slik at (i) går fra 2 til 1 i loopen. (har i=i+1 i slutten av loopen)
+                print(f'Too high, you got {2-i} attempts left')
                 
-        condition = True
-        while condition:
-            num_guess = input('Enter a number between 1 and 50: ')
-            if num_guess.isdigit() is False:
-                print(f'Invalid input, you got {2-i} attempts left')
-                num_guess = input('Enter a number between 1 and 50: ')
-                if num_guess.isdigit() is True:
-                    condition = False
-                else:
-                    print(f'Invalid input, you got {2-i} attempts left')
-            elif int(num_guess) > 0:
-                if int(num_guess) <= 50:
-                    condition = False
-                else:
-                    print(f'Invalid input, you got {2-i} attempts left')
-            else:
-                print(f'Invalid input, you got {2-i} attempts left')
-        
         i = i + 1
-        #------------ loop slutt -----------#
         
     if winning_amount == 0:
-        print('You lost your betting amount')
+        print(f'You lost your betting amount, correct number was {random}')
     else:
         print(f'Congratulationt {name}! You won:', winning_amount, '$')
     
@@ -203,8 +171,3 @@ def function():
         
             
 function()
-        
-        
-
-    
-    
