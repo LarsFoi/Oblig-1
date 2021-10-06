@@ -5,8 +5,6 @@ Created on Mon Oct  4 17:26:07 2021
 @author: håkon
 """
 
-# endret så numguess alltid er innenfor (1,50)
-
 from random import randint
 
 print('%3s' % '-','%0s' % '', 'Choose any number between 1 and 50.')
@@ -60,6 +58,8 @@ def function():
                 betting_amount = input('Enter your betting amount: ')
                 if betting_amount.isdigit() is True:
                     condition = False
+                else:
+                    print('',end='')
         else:
             condition = False
             
@@ -71,13 +71,26 @@ def function():
                 else:
                     print(f'You can not bet more than your initial amount ({initial_amount} $)')
                     betting_amount = input('Enter a betting amount: ')
-                    if betting_amount.isdigit() is False:
-                        condition = True
-                        while condition:
-                            print('Invalid input')
-                            betting_amount = input('Enter your betting amount: ')
-                            if betting_amount.isdigit() is True:
-                                condition = False
+                    condition = True
+                    while condition:
+                        if betting_amount.isdigit() is False:
+                            condition = True
+                            while condition:
+                                print('Invalid input')
+                                betting_amount = input('Enter your betting amount: ')
+                                if betting_amount.isdigit() is True:
+                                    condition = False
+                                else:
+                                    print('',end='')
+                        else:
+                            if int(betting_amount) > 0 and int(betting_amount) <= 50:
+                                    condition = False
+                            else:
+                                print('Invalid input')
+                                betting_amount = input('Enter your betting amount: ')
+                                    
+                                
+                        
             elif int(betting_amount) == 0:
                 print('You got to bet something!')
                 break
@@ -103,7 +116,7 @@ def function():
                 print(f'Invalid input, you got {3-i} attempts left')
                 num_guess = input('Enter a number between 1 and 50: ')
                 if num_guess.isdigit() is True:
-                    if int(num_guess) <= 50 and int(num_guess) > 0:             # la til ny if else her for å sørge for at numguess er innenfor (1,50)
+                    if int(num_guess) <= 50 and int(num_guess) > 0:
                         condition = False
                     else:
                         print(f'Invalid input, you got {3-i} attempts left')
@@ -175,3 +188,4 @@ def function():
         
             
 function()
+       
