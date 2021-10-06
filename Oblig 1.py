@@ -2,108 +2,52 @@
 """
 Created on Mon Oct  4 17:26:07 2021
 
-@author: håkon
+@author: haako
 """
+# Tror vi har den nå :D
 
+name = input('Please enter your name: ')
+name = name.title()
 from random import randint
-
+print()
+print('%61s' % f'Hello {name}, Welcome to the guessing game! Here are the rules:')
+print('-'*63)
 print('%3s' % '-','%0s' % '', 'Choose any number between 1 and 50.')
 print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 1.st attempt, you will get 10 times the money you bet')
 print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 2.nd attempt, you will get 5 times the money you bet')
 print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 3.rd attempt, you will get 3 times the money you bet')
 print('%3s' % '-','%0s' % '', 'If you do not guess the number correctly within three attempts, you will lose your betting amount')
 
-name = input('Please enter your name: ')
-
-# kjører mye while utifra om condition er true eller false, gjør at ting repiteres helt til input er gyldig.
-
-initial_amount = input('Enter your initial amount: ')
 condition = True
 while condition:
+    initial_amount = input('Enter your initial amount: ')
     if initial_amount.isdigit() is False:               
-        condition = True
-        while condition:
-            print('Invalid input')
-            initial_amount = input('Enter your initial amount: ')
-            if initial_amount.isdigit() is True:
-                condition = False
-            else:
-                print('',end='')
+        print('Invalid input')
                 
     elif int(initial_amount) <= 0:
-            condition = True
-            print('Invalid input')
-            while condition:
-                initial_amount = input('Enter your initial amount: ')
-                if initial_amount.isdigit() is True:
-                    if int(initial_amount) <= 0:
-                        print('Invalid input')
-                    else:
-                        condition = False
-                else:
-                    print('Invalid input')
+        print('Invalid input')
+        
     else:
         condition = False
             
 
-def function():
-    global initial_amount
+def function(): 
+    global initial_amount      
     condition = True
     while condition:
         betting_amount = input('Enter a betting amount: ')
-        if betting_amount.isdigit() is False:
-            condition = True
-            while condition:
-                print('Invalid input')
-                betting_amount = input('Enter your betting amount: ')
-                if betting_amount.isdigit() is True:
-                    condition = False
-                else:
-                    print('',end='')
-        else:
-            condition = False
-            
-        condition = True
-        while condition:
-            if int(betting_amount) > 0:
-                if int(betting_amount) <= int(initial_amount):
-                    condition = False
-                else:
-                    print(f'You can not bet more than your initial amount ({initial_amount} $)')
-                    betting_amount = input('Enter a betting amount: ')
-                    condition = True
-                    while condition:
-                        if betting_amount.isdigit() is False:
-                            condition = True
-                            while condition:
-                                print('Invalid input')
-                                betting_amount = input('Enter your betting amount: ')
-                                if betting_amount.isdigit() is True:
-                                    condition = False
-                                else:
-                                    print('',end='')
-                        else:
-                            if int(betting_amount) > 0 and int(betting_amount) <= 50:
-                                    condition = False
-                            else:
-                                print('Invalid input')
-                                betting_amount = input('Enter your betting amount: ')
-                                    
-                                
-                        
-            elif int(betting_amount) == 0:
-                print('You got to bet something!')
-                break
+        if betting_amount.isdigit() is True:
+            if int(betting_amount) > 0 and int(betting_amount) <= int(initial_amount):
+                condition = False
             else:
-                print('You can not bet a negative number')
-                betting_amount = input('Enter a betting amount: ')
-                if betting_amount.isdigit() is False:
-                    condition = True
-                    while condition:
-                        print('Invalid input')
-                        betting_amount = input('Enter your betting amount: ')
-                        if betting_amount.isdigit() is True:
-                            condition = False
+                if int(betting_amount) == 0:
+                    print('You gotta bet something!')
+                elif int(betting_amount) < 0:
+                    print('You cant bet negative')
+                else:
+                    print(f'You cant bet more than your initial amount ({initial_amount} $)')
+        else:
+            print('Invalid input')
 
     i = 0
     random = randint(1,50)
@@ -188,4 +132,4 @@ def function():
         
             
 function()
-       
+        
