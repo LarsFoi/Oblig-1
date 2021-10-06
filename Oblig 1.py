@@ -27,6 +27,10 @@ while condition:
     elif int(initial_amount) <= 0:
         print('Invalid input')
         
+    elif int(initial_amount) >= 10000:
+        print('You stupid')
+        condition = False
+        
     else:
         condition = False
             
