@@ -4,7 +4,8 @@ Created on Mon Oct  4 17:26:07 2021
 
 @author: håkon
 """
-# Gjorde endring på num guess / winning amount loopen, ble no feil sånn den var, ble også lettere å forstå nå..
+
+# endret så numguess alltid er innenfor (1,50)
 
 from random import randint
 
@@ -102,7 +103,10 @@ def function():
                 print(f'Invalid input, you got {3-i} attempts left')
                 num_guess = input('Enter a number between 1 and 50: ')
                 if num_guess.isdigit() is True:
-                    condition = False
+                    if int(num_guess) <= 50 and int(num_guess) > 0:             # la til ny if else her for å sørge for at numguess er innenfor (1,50)
+                        condition = False
+                    else:
+                        print(f'Invalid input, you got {3-i} attempts left')
                 else:
                     print(f'Invalid input, you got {3-i} attempts left')
             elif int(num_guess) > 0:
