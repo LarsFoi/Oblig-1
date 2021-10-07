@@ -2,9 +2,10 @@
 """
 Created on Mon Oct  4 17:26:07 2021
 
-@author: haako
+@author: håkon
 """
-# Tror vi har den nå :D
+
+# Endret så man ikke kan skrive null først i initial amount, betting amount og num guess! skrev jeg f.eks 045 i num guess før så fikk jeg too high hvis random var under det..
 
 name = input('Please enter your name: ')
 name = name.title()
@@ -23,14 +24,13 @@ while condition:
     initial_amount = input('Enter your initial amount: ')
     if initial_amount.isdigit() is False:               
         print('Invalid input')
-                
+    elif initial_amount[0] == '0':
+        print('Invalid input')
     elif int(initial_amount) <= 0:
         print('Invalid input')
-        
     elif int(initial_amount) >= 10000:
-        print('You got balls')
+        print('You got balls!')
         condition = False
-        
     else:
         condition = False
             
@@ -41,7 +41,9 @@ def function():
     while condition:
         betting_amount = input('Enter a betting amount: ')
         if betting_amount.isdigit() is True:
-            if int(betting_amount) > 0 and int(betting_amount) <= int(initial_amount):
+            if betting_amount[0] == '0':
+                print('Invalid input')
+            elif int(betting_amount) > 0 and int(betting_amount) <= int(initial_amount):
                 condition = False
             else:
                 if int(betting_amount) == 0:
@@ -70,6 +72,8 @@ def function():
                         print(f'Invalid input, you got {3-i} attempts left')
                 else:
                     print(f'Invalid input, you got {3-i} attempts left')
+            elif num_guess[0] == '0':
+                print('Invalid input')
             elif int(num_guess) > 0:
                 if int(num_guess) <= 50:
                     condition = False
@@ -137,3 +141,4 @@ def function():
             
 function()
         
+       
