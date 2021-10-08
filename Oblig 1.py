@@ -1,4 +1,4 @@
-#Gruppe 30- Håvard, Håkon, Lars, Michael
+#Gruppe 30 - Håvard, Håkon, Lars, Michael
 
 name = input('Please enter your name: ')
 if name == 'hadi':
@@ -30,8 +30,7 @@ while condition:
         print('You got balls!')
         condition = False
     else:
-        condition = False
-            
+        condition = False            
 
 def function(): 
     global initial_amount      
@@ -39,21 +38,21 @@ def function():
     while condition:
         betting_amount = input('Enter a betting amount: ')
         if betting_amount.isdigit() is True:
-            if betting_amount[0] == '0':
-                print('Invalid input')
-            elif int(betting_amount) > 0 and int(betting_amount) <= int(initial_amount):
-                condition = False
-            else:
-                if int(betting_amount) == 0:
+            if int(betting_amount) == 0:
                     print('You gotta bet something!')
-                elif int(betting_amount) < 0:
-                    print('You cant bet negative')
+            elif betting_amount[0] == '0':
+                print('Invalid input')
+            else:
+                if int(betting_amount) > 0 and int(betting_amount) <= int(initial_amount):
+                    condition = False
                 else:
                     print(f'You cant bet more than your initial amount ({initial_amount} $)')
         else:
-            print('Invalid input')
+            if betting_amount[0] == '-':
+                print('You cant bet negative')
+            else:
+                print('Invalid input')
 
-    i = 0
     random = randint(1,50)
     winning_amount = 0
     for i in range(3):
@@ -63,7 +62,7 @@ def function():
             if num_guess.isdigit() is False:
                 print(f'Invalid input, you got {3-i} attempts left')
             elif num_guess[0] == '0':
-                print('Invalid input')
+                print(f'Invalid input, you got {3-i} attempts left')
             elif int(num_guess) > 0:
                 if int(num_guess) <= 50:
                     condition = False
@@ -96,8 +95,6 @@ def function():
         print(f'You lost your betting amount, correct number was {random}')
     else:
         print(f'Congratulationt {name2}! You won:', winning_amount, '$')
-    
-    # Utregningen på hvor mye som er igjen på spill-kontoen:
         
     initial_amount = int(initial_amount) - int(betting_amount) + winning_amount
     
@@ -109,7 +106,7 @@ def function():
         print('Play again?',end='')
         game = input("'y'es or 'n'o: ")
         if game == 'y':
-            function()      # kjører hele funksjonen på nytt hvis 'y'
+            function()
         elif game == 'n':
             print()
             print(f'Thanks for the game, {name2}! You got {initial_amount} $')
@@ -126,7 +123,6 @@ def function():
                     print(f'Thanks for the game, {name2}! You got {initial_amount} $')
                     break
                 else:
-                    print('',end='')
-        
-            
+                    print('',end='')       
+
 function()
