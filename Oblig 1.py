@@ -1,17 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Oct  4 17:26:07 2021
-
-@author: håkon
-"""
-
-# Endret så man ikke kan skrive null først i initial amount, betting amount og num guess! skrev jeg f.eks 045 i num guess før så fikk jeg too high hvis random var under det..
+# Gruppe 30- Håvard, Lars, Michael, Håkon
 
 name = input('Please enter your name: ')
-name = name.title()
-from random import randint
+if name == 'hadi':
+    name1 = 'king hadi'
+    name2 = name1.title()
+else:
+    name2 = name.title()
+
 print()
-print('%61s' % f'Hello {name}, Welcome to the guessing game! Here are the rules:')
+print('%61s' % f'Hello {name2}, Welcome to the guessing game! Here are the rules:')
 print('-'*63)
 print('%3s' % '-','%0s' % '', 'Choose any number between 1 and 50.')
 print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 1.st attempt, you will get 10 times the money you bet')
@@ -19,6 +16,7 @@ print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 2.nd at
 print('%3s' % '-','%0s' % '', 'If you guess the number correctly at your 3.rd attempt, you will get 3 times the money you bet')
 print('%3s' % '-','%0s' % '', 'If you do not guess the number correctly within three attempts, you will lose your betting amount')
 
+from random import randint
 condition = True
 while condition:
     initial_amount = input('Enter your initial amount: ')
@@ -105,7 +103,7 @@ def function():
     if winning_amount == 0:
         print(f'You lost your betting amount, correct number was {random}')
     else:
-        print(f'Congratulationt {name}! You won:', winning_amount, '$')
+        print(f'Congratulationt {name2}! You won:', winning_amount, '$')
     
     # Utregningen på hvor mye som er igjen på spill-kontoen:
         
@@ -113,7 +111,7 @@ def function():
     
     if initial_amount == 0:
         print()
-        print(f'Sorry {name}, you lost all your money, thanks for playing!')
+        print(f'Sorry {name2}, you lost all your money, thanks for playing!')
     else:
         print('Your initial amount is:', int(initial_amount), '$')
         print('Play again?',end='')
@@ -122,7 +120,7 @@ def function():
             function()      # kjører hele funksjonen på nytt hvis 'y'
         elif game == 'n':
             print()
-            print(f'Thanks for the game, {name}! You got {initial_amount} $')
+            print(f'Thanks for the game, {name2}! You got {initial_amount} $')
         else:
             condition = True
             while condition:
@@ -133,7 +131,7 @@ def function():
                     function()
                 elif game == 'n':
                     print()
-                    print(f'Thanks for the game, {name}! You got {initial_amount} $')
+                    print(f'Thanks for the game, {name2}! You got {initial_amount} $')
                     break
                 else:
                     print('',end='')
@@ -141,4 +139,7 @@ def function():
             
 function()
         
-       
+        
+
+    
+    
