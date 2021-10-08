@@ -1,4 +1,4 @@
-# Gruppe 30- Håvard, Lars, Michael, Håkon
+#Gruppe 30- Håvard, Håkon, Lars, Michael
 
 name = input('Please enter your name: ')
 if name == 'hadi':
@@ -62,14 +62,6 @@ def function():
             num_guess = input('Enter a number between 1 and 50: ')
             if num_guess.isdigit() is False:
                 print(f'Invalid input, you got {3-i} attempts left')
-                num_guess = input('Enter a number between 1 and 50: ')
-                if num_guess.isdigit() is True:
-                    if int(num_guess) <= 50 and int(num_guess) > 0:
-                        condition = False
-                    else:
-                        print(f'Invalid input, you got {3-i} attempts left')
-                else:
-                    print(f'Invalid input, you got {3-i} attempts left')
             elif num_guess[0] == '0':
                 print('Invalid input')
             elif int(num_guess) > 0:
@@ -138,8 +130,3 @@ def function():
         
             
 function()
-        
-        
-
-    
-    
