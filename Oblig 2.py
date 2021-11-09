@@ -15,11 +15,12 @@ def login_info():
 if login_info():
     print('Valid input!')
 
+### en måte å tenke på...
 def q1():
     input_1 = input('What is the capital of Norway?: ')
     if input_1 == 'oslo':
-        return 1
-print(q1())
+        return 1   ## returner 1 hvis svaret er riktig... kan dermed holde styr på hvilket svar som var riktig, hvis vi har en funksjon for hvert spørsmål/svar...
+print(q1())  ## blir 1 hvis input_1 = oslo..
 
 
 score = 0
