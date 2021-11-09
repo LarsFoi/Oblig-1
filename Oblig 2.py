@@ -19,7 +19,7 @@ def q1():
     input_1 = input('What is the capital of Norway?: ')
     if input_1 == 'oslo':
         return 1
-rint(q1())
+print(q1())
 
 
 score = 0
