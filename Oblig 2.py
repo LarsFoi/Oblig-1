@@ -1,10 +1,8 @@
 #Gruppe 30 - Håvard, Håkon, Lars, Michael
-i = 0
-score = 0
-<<i = 0
-=====
 
-l
+score = 0
+i = 0
+
 login_keys = {'username': 'MEK1300', 'password': 'Python'}
 
 def login_info():
@@ -28,9 +26,6 @@ if login_info():
 #print(q1())  ## blir 1 hvis input_1 = oslo..
 
 
->>>>>>>+oblig-1/main
-0
->>>>>>> oblig-1/main
 FA = []
 FQ = []
 
