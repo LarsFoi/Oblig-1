@@ -15,7 +15,7 @@ def login_info():
 if login_info():
     print('Valid input!')
 
-### en måte å tenke på...
+### en måte å tenke på -->
 def q1():
     input_1 = input('What is the capital of Norway?: ')
     if input_1 == 'oslo':
