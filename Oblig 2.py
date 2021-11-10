@@ -1,4 +1,4 @@
-#Gruppe 30 - Håvard, Håkon, Lars, Michael
+1111111111
 
 score = 0
 i = 0
