@@ -2,7 +2,8 @@
 
 score = 0
 i = 0
-
+FQ = []
+FA = []
 login_keys = {'username': 'MEK1300', 'password': 'Python'}
 
 def login_info():
@@ -14,8 +15,6 @@ def login_info():
             return True
         else:
             print('Invalid username and/or password')
-FQ = []
-FA = []
 
 Q = ["What is the capital of Norway?",
 "What is the currency of Norway?",
@@ -87,10 +86,7 @@ def main():
 		print("You answered:   ", A[item][FA[i]])
 		print("Correct answer: ", CA1[item],"\n")
 		i = i + 1
-		
-		
-		
-		
+
 if login_info():
     print(f"\nLogin sucessfull!\n")
 
