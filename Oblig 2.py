@@ -14,19 +14,8 @@ def login_info():
             return True
         else:
             print('Invalid username and/or password')
-
-if login_info():
-    print('Valid input!')
-
-### en måte å tenke på -->
-#def q1():
-#    input_1 = input('What is the capital of Norway?: ')
-#    if input_1 == 'oslo':
-#        return 1   ## returner 1 hvis svaret er riktig... kan dermed holde styr på hvilket svar som var riktig, hvis vi har en funksjon for hvert spørsmål/svar...
-#print(q1())  ## blir 1 hvis input_1 = oslo..
-
-FA = []
 FQ = []
+FA = []
 
 Q = ["What is the capital of Norway?",
 "What is the currency of Norway?",
@@ -40,56 +29,69 @@ Q = ["What is the capital of Norway?",
 "From which Norwegian city did the world’s famous composer Edvard Grieg come?"]
 
 CA = [2,3,1,2,1,3,4,2,3,2]
+CA1 = ["Oslo", "Krone", "Oslo" , "17th May","Red","3","NTNU","196Km","South-west","Bergen"]
 
 A = [
-			["","","",""],
-			["","","",""],
-			["","","",""],
-			["","","",""],
-			["","","",""],
-			["","","",""],
-			["","","",""],
-			["","","",""],
-			["","","",""],
-			["","","",""]
+			["1. Bergen","2. Oslo","3. Stavanger","4. Trondheim"],					##A1
+			["1. Euro","2. Pound","3. Krone","4. Deutshe Mark"],						##A2
+			["1. Oslo","2. stavanger","3. Bergen","4. Trondheim"],					##A3
+			["1. 27th May","2. 17th May","3. 17th April","4. 27th April"],	##A4
+			["1. Red","2. White","3. Blue","4. Yellow"],										##A5
+			["1. 1","2. 2","3. 3","4. 4"],																	##A6
+			["1. Uis","2. UiO","3. NMBU","4. NTNU"],												##A7
+			["1. 96Km","2. 196Km","3. 296Km","4. 396Km"],										##A8
+			["1. North","2. South","3. South-west","4. South-east"],				##A9
+			["1. Oslo","2. Bergen","3. Stavanger","4. Tromsø"]							##A10
 ]
 								
 def main(): 
 	global score
+	global fa
 	for i in range(10):	
-		print(Q[i])
-		print(A[i])
+		print(Q[i],"\n")
+		for ans in A[i]:
+			print(ans,"\n")
 	
 		condition = True
 		while condition:
 			answer = input(f'What is the correct answer (1-4?) to question {i+1}: ')
 			if answer.isdigit() is False:
-				print('Invalid input1')
+				print('Invalid input')
 			elif answer[0] == '0':
-				print('Invalid input2')
+				print('Invalid input')
 			elif int(answer) > 0:
 				if int(answer) <= 4:
-					condition = False 
+					condition = False
+					print()
 				else:
-					print(f'Invalid input3')
+					print(f'Invalid input')
 			else:
-				print(f'Invalid input4')
+				print(f'Invalid input')
 		
 		if int(answer) == CA[i]: ### list[i]
-			score = score + 1
-			print("'C'next question")
-			
-			
+			score = score + 1		
 			i = i + 1
 		else:
-			print("'w'next question")
 			FQ.append(i)
-			FA.append(answer)
-			
+			FA.append(int(answer)-1)		
 			i = i + 1
 		
-			
-
-
+	print(f"You got {score} questions right\n")
+	print("")
+	
+	i = 0
+	
+	for item in FQ:
+		print(f"Question {item+1}:")
+		print(Q[item],"\n")
+		print("You answered:   ", A[item][FA[i]])
+		print("Correct answer: ", CA1[item],"\n")
+		i = i + 1
+		
+		
+		
+		
+if login_info():
+    print(f"\nLogin sucessfull!\n")
 
 main()
