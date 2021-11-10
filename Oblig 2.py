@@ -22,9 +22,7 @@ def login_info():
 
 def main():
 	global score
-	print("#——————————————————————————————#")
-	print("-The norwegian citizenship test-")
-	print("#——————————————————————————————#\n")
+	print("#——————————————————————————————#\n-The norwegian citizenship test-\n#——————————————————————————————#\n")
 	time.sleep(0.5)
 	for i in range(10):	
 		print(QUESTIONS[i],"\n")
